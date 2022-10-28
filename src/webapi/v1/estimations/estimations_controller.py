@@ -8,11 +8,11 @@ router = APIRouter()
 
 
 @router.get(
-    '/',
+    '',
     status_code=status.HTTP_200_OK,
     response_model=EstimationResponse
 )
-async def search_location(
+async def estimate_trip(
         origin: str = '',
         destination: str = '',
         estimated_time: str = '',
