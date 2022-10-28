@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from src.repositories import BaseRepository
 from src.domain.rule import Rule
 
+
 class RuleRepository(BaseRepository):
     def __init__(self, session):
         super().__init__()

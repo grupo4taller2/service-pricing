@@ -4,7 +4,6 @@ from sqlalchemy import Column, String, DateTime
 from sqlalchemy.sql import func
 from sqlalchemy.orm import declarative_base
 
-from src.domain.rule import Rule
 
 Base = declarative_base()
 
