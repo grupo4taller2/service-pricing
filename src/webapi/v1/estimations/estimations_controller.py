@@ -13,16 +13,15 @@ router = APIRouter()
     response_model=EstimationResponse
 )
 async def estimate_trip(
-        origin: str = '',
-        destination: str = '',
-        estimated_time: str = '',
-        distance: str = '',
+        rider_username: str = '',
         origin_address: str = '',
         origin_latitude: float = -9000.9,
         origin_longitude: float = -9000.9,
         destination_address: str = '',
         destination_latitude: float = -9000.9,
-        destination_longitude: float = -9000.9):
+        destination_longitude: float = -9000.9,
+        estimated_time: str = '',
+        distance: str = ''):
 
     value, unit = distance.split(' ')
     value = float(value)
