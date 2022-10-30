@@ -20,14 +20,9 @@ async def estimate_trip(
         destination_address: str = '',
         destination_latitude: float = -9000.9,
         destination_longitude: float = -9000.9,
-        estimated_time: str = '',
-        distance: str = ''):
-
-    value, unit = distance.split(' ')
-    value = float(value)
-    if unit == 'km':
-        value *= 1000
+        estimated_time: int = 0,
+        distance: int = 0):
 
     return EstimationResponse(
-        estimated_price=0.000013*value
+        estimated_price=0.000013*distance
     )
