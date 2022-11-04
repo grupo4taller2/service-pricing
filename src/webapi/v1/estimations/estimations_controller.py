@@ -24,5 +24,5 @@ async def estimate_trip(
         distance: int = 0):
 
     return EstimationResponse(
-        estimated_price=0.000013*distance
+        estimated_price=str(0.000013*distance)
     )
