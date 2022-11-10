@@ -38,4 +38,4 @@ async def get_all_rules():
     cmd = RuleGetAllCommand()
     uow = UnitOfWork()
     rules: List[Rule] = messagebus.handle(cmd, uow)[0]
-    return RulePresenter.present(rules)
+    return [RulePresenter.present(rule) for rule in rules]

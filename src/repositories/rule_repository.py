@@ -17,4 +17,10 @@ class RuleRepository(BaseRepository):
         pass
 
     def all(self):
-        rules_dtos = self.session.query(RuleDTO)
+        rules_dtos = self.session.query(RuleDTO).all()
+        rules = []
+        for rdto in rules_dtos:
+            rule = rdto.to_entity()
+            self.seen.add(rule)
+            rules.append(rule)
+        return rules
