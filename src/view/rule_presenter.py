@@ -7,6 +7,7 @@ class RulePresenter:
     @classmethod
     def present(cls, rule: Rule):
         return RuleResponse(
+            id=rule.id,
             c_km=str(rule.c_km),
             c_min_price=str(rule.c_min),
             c_rating=str(rule.c_rating),

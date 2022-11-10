@@ -17,7 +17,7 @@ api_router.include_router(healthcheck.router,
 api_router.include_router(estimations_controller.router,
                           prefix='/estimations',
                           tags=['estimations'])
-                          
+
 api_router.include_router(rules_controller.router,
                           prefix='/rules',
                           tags=['rules'])
