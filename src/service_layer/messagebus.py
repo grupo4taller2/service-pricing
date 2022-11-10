@@ -2,6 +2,7 @@ from __future__ import annotations
 import logging
 from typing import List, Dict, Callable, Type, Union
 from src.domain import commands, events
+from src.service_layer import handlers
 
 from src.service_layer.abstract_unit_of_work import AbstractUnitOfWork
 
@@ -61,5 +62,5 @@ EVENT_HANDLERS = {
 }  # type: Dict[Type[events.Event], List[Callable]]
 
 COMMAND_HANDLERS = {
-
+    commands.RuleGetCommand: handlers.get_rule
 }  # type: Dict[Type[commands.Command], Callable]
