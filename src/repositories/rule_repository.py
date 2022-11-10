@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 
 from src.repositories.base_repository import BaseRepository
 from src.domain.rule import Rule
+from src.database.rule_dto import RuleDTO
 
 
 class RuleRepository(BaseRepository):
@@ -14,3 +15,6 @@ class RuleRepository(BaseRepository):
 
     def update(self, rule: Rule):
         pass
+
+    def all(self):
+        rules_dtos = self.session.query(RuleDTO)

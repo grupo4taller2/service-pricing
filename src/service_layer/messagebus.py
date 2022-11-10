@@ -62,5 +62,6 @@ EVENT_HANDLERS = {
 }  # type: Dict[Type[events.Event], List[Callable]]
 
 COMMAND_HANDLERS = {
-    commands.RuleGetCommand: handlers.get_rule
+    commands.RuleGetCommand: handlers.get_rule,
+    commands.RuleGetAllCommand: handlers.get_all_rules
 }  # type: Dict[Type[commands.Command], Callable]

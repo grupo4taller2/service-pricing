@@ -6,5 +6,9 @@ class Command(BaseModel):
     pass
 
 
-class RuleGetCommand(BaseModel):
+class RuleGetCommand(Command):
     id: Optional[str]
+
+
+class RuleGetAllCommand(Command):
+    pass
