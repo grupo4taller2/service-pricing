@@ -5,7 +5,8 @@ getcontext().prec = PRECISION
 
 
 class Rule:
-    def __init__(self, c_km, c_trips_last_30m, c_rating, c_min):
+    def __init__(self, id, c_km, c_trips_last_30m, c_rating, c_min):
+        self.id = id
         self.c_km = Decimal(c_km)
         self.c_trips_last_30m = Decimal(c_trips_last_30m)
         self.c_rating = Decimal(c_rating)

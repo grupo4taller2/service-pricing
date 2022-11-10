@@ -7,6 +7,7 @@ def test_rule_coefficients():
     c_rating = '3.45'
     c_min = '4.56'
     rule: Rule = Rule(
+        'fake_id',
         c_km,
         c_trips_last_30m,
         c_rating,
