@@ -3,7 +3,8 @@ from fastapi import APIRouter, status
 
 from src.webapi.v1.rules.req_res_rules_models import (
     RuleResponse,
-    RuleCreateRequest
+    RuleCreateRequest,
+    RuleUpdateRequest
 )
 
 from src.service_layer import messagebus
@@ -11,7 +12,8 @@ from src.domain.rule import Rule
 from src.domain.commands import (
     RuleGetCommand,
     RuleGetAllCommand,
-    RuleCreateCommand
+    RuleCreateCommand,
+    RuleUpdateCommand
 )
 from src.repositories.unit_of_work import UnitOfWork
 from src.view.rule_presenter import RulePresenter
@@ -58,4 +60,22 @@ async def create_rule(body: RuleCreateRequest):
     )
     uow = UnitOfWork()
     rule: Rule = messagebus.handle(cmd, uow)[0]
+    return RulePresenter.present(rule)
+
+
+@router.patch(
+    '/{id}',
+    status_code=status.HTTP_202_ACCEPTED,
+    response_model=RuleResponse
+)
+async def update_rule(id: str, req: RuleUpdateRequest):
+    cmd = RuleUpdateCommand(
+        id=id,
+        c_km=req.c_km,
+        c_trips_last_30m=req.c_trips_last_30m,
+        c_rating=req.c_rating,
+        c_min_price=req.c_min_price,
+    )
+    uow = UnitOfWork()
+    rule = messagebus.handle(cmd, uow)[0]
     return RulePresenter.present(rule)

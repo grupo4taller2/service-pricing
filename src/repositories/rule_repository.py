@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from src.repositories.base_repository import BaseRepository
 from src.domain.rule import Rule
 from src.database.rule_dto import RuleDTO
+from src.domain.commands import RuleUpdateCommand
 
 
 class RuleRepository(BaseRepository):
@@ -15,8 +16,14 @@ class RuleRepository(BaseRepository):
         self.session.add(rule_dto)
         return rule
 
-    def update(self, rule: Rule):
-        pass
+    def update(self, cmd: RuleUpdateCommand):
+        rule_update_attrs = dict(
+            # sorcery
+            [(k, v) for k, v in dict(cmd).items() if v is not None]
+        )
+        query = self.session.query(RuleDTO).filter_by(id=cmd.id)
+        query.update(rule_update_attrs)
+        return query.one().to_entity()
 
     def all(self):
         rules_dtos = self.session.query(RuleDTO).all()

@@ -3,7 +3,8 @@ from uuid import uuid4
 from src.domain.commands import (
     RuleGetCommand,
     RuleGetAllCommand,
-    RuleCreateCommand
+    RuleCreateCommand,
+    RuleUpdateCommand
 )
 from src.domain.rule import Rule
 from src.service_layer.abstract_unit_of_work import AbstractUnitOfWork
@@ -37,5 +38,12 @@ def create_rule(cmd: RuleCreateCommand, uow: AbstractUnitOfWork):
             c_min_price=cmd.c_min_price
         )
         rule = uow.rule_repository.save(rule)
+        uow.commit()
+        return rule
+
+
+def update_rule(cmd: RuleUpdateCommand, uow: AbstractUnitOfWork):
+    with uow:
+        rule: Rule = uow.rule_repository.update(cmd)
         uow.commit()
         return rule
