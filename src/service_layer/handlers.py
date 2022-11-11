@@ -4,7 +4,8 @@ from src.domain.commands import (
     RuleGetCommand,
     RuleGetAllCommand,
     RuleCreateCommand,
-    RuleUpdateCommand
+    RuleUpdateCommand,
+    RuleEvaluateCommand
 )
 from src.domain.rule import Rule
 from src.service_layer.abstract_unit_of_work import AbstractUnitOfWork
@@ -47,3 +48,19 @@ def update_rule(cmd: RuleUpdateCommand, uow: AbstractUnitOfWork):
         rule: Rule = uow.rule_repository.update(cmd)
         uow.commit()
         return rule
+
+
+def evaluate_rule(cmd: RuleEvaluateCommand, uow: AbstractUnitOfWork):
+    with uow:
+        rule: Rule = Rule(
+                id='fake_id',
+                c_km=cmd.c_km,
+                c_trips_last_30m=cmd.c_trips_last_30m,
+                c_rating=cmd.c_rating,
+                c_min_price=cmd.c_min_price
+            )
+        return rule.price_for(
+            cmd.n_km,
+            cmd.n_trips_last_30m,
+            cmd.n_rating
+        )

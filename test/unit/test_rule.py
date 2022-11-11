@@ -14,4 +14,4 @@ def test_rule_coefficients():
         c_min
     )
 
-    assert rule.price_for(1, 1, 1, 1) == '11.58'
+    assert rule.price_for('1', '1', '1') == '7.02'

@@ -14,11 +14,12 @@ class Rule:
         self.c_min_price = Decimal(c_min_price)
         self.events = [] if not events else events
 
-    def price_for(self, n_km, n_trips_last_30m, n_rating, n_min):
+    def price_for(self, n_km, n_trips_last_30m, n_rating):
         result = Decimal('0')
-        result += n_km * self.c_km
-        result += n_trips_last_30m * self.c_trips_last_30m
-        result += n_rating * self.c_rating
-        result += n_min * self.c_min_price
+        result += Decimal(n_km) * self.c_km
+        result += Decimal(n_trips_last_30m) * self.c_trips_last_30m
+        result += Decimal(n_rating) * self.c_rating
+        if result < self.c_min_price:
+            result = self.c_min_price
         # FIXME: Sería mejor modelado como una clase Price o similar
         return str(result)
