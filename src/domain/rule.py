@@ -12,6 +12,7 @@ class Rule:
         self.c_trips_last_30m = Decimal(c_trips_last_30m)
         self.c_rating = Decimal(c_rating)
         self.c_min_price = Decimal(c_min_price)
+        self.active = False
         self.events = [] if not events else events
 
     def price_for(self, n_km, n_trips_last_30m, n_rating):
@@ -23,3 +24,9 @@ class Rule:
             result = self.c_min_price
         # FIXME: Sería mejor modelado como una clase Price o similar
         return str(result)
+
+    def activate(self):
+        self.active = True
+
+    def is_active(self):
+        return self.active

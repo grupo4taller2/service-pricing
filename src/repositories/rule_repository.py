@@ -33,3 +33,11 @@ class RuleRepository(BaseRepository):
             self.seen.add(rule)
             rules.append(rule)
         return rules
+
+    def find_by_id(self, id):
+        query = self.session.query(RuleDTO).filter_by(id=id)
+        return query.one().to_entity()
+
+    def active(self):
+        query = self.session.query(RuleDTO).filter_by(active=True).first()
+        return query.to_entity()
