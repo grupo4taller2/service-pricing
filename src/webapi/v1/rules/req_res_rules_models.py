@@ -9,6 +9,7 @@ class RuleResponse(BaseModel):
     c_min_price: str = Field(example='1.15')
     c_rating: str = Field(example='3.14')
     c_trips_last_30m: str = Field(example='4.9')
+    active: bool = Field(example=True)
 
 
 class RuleCreateRequest(BaseModel):
@@ -23,6 +24,7 @@ class RuleUpdateRequest(BaseModel):
     c_min_price: Optional[str] = Field(example='1.15')
     c_rating: Optional[str] = Field(example='3.14')
     c_trips_last_30m: Optional[str] = Field(example='4.9')
+    active: Optional[bool] = Field(example=True)
 
 
 class RuleEvaluateRequest(BaseModel):

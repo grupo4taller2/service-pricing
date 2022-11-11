@@ -12,4 +12,5 @@ class RulePresenter:
             c_min_price=str(rule.c_min_price),
             c_rating=str(rule.c_rating),
             c_trips_last_30m=str(rule.c_trips_last_30m),
+            active=rule.is_active()
         )

@@ -27,6 +27,7 @@ class RuleUpdateCommand(RuleCreateCommand):
     c_trips_last_30m: Optional[str]
     c_rating: Optional[str]
     c_min_price: Optional[str]
+    active: Optional[bool]
 
 
 class RuleEvaluateCommand(Command):

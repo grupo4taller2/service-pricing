@@ -30,7 +30,7 @@ router = APIRouter()
     response_model=RuleResponse
 )
 async def get_rule(rule_id: str):
-    cmd = RuleGetCommand(rule_id)
+    cmd = RuleGetCommand(id=rule_id)
     # FIXME: Tendría que instanciarse una única vez por fuera?
     uow = UnitOfWork()
     rule: Rule = messagebus.handle(cmd, uow)[0]
@@ -78,6 +78,7 @@ async def update_rule(id: str, req: RuleUpdateRequest):
         c_trips_last_30m=req.c_trips_last_30m,
         c_rating=req.c_rating,
         c_min_price=req.c_min_price,
+        active=req.active
     )
     uow = UnitOfWork()
     rule = messagebus.handle(cmd, uow)[0]
