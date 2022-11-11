@@ -9,7 +9,7 @@ class RulePresenter:
         return RuleResponse(
             id=rule.id,
             c_km=str(rule.c_km),
-            c_min_price=str(rule.c_min),
+            c_min_price=str(rule.c_min_price),
             c_rating=str(rule.c_rating),
             c_trips_last_30m=str(rule.c_trips_last_30m),
         )

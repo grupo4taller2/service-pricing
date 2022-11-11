@@ -19,7 +19,7 @@ class RuleDTO(Base):
     created_at: Union[DateTime, Column] = Column(
         DateTime(timezone=True), server_default=func.now())
     updated_at: Union[DateTime, Column] = Column(
-        DateTime(timezone=True), on_update=func.now())
+        DateTime(timezone=True), onupdate=func.now())
 
     def to_entity(self):
         return Rule(self.id,
@@ -28,3 +28,12 @@ class RuleDTO(Base):
                     self.c_rating,
                     self.c_min_price)
 
+    @staticmethod
+    def from_entity(rule):
+        return RuleDTO(
+            id=rule.id,
+            c_km=rule.c_km,
+            c_trips_last_30m=rule.c_trips_last_30m,
+            c_rating=rule.c_rating,
+            c_min_price=rule.c_min_price,
+        )

@@ -11,7 +11,9 @@ class RuleRepository(BaseRepository):
         self.session: Session = session
 
     def save(self, rule: Rule):
-        pass
+        rule_dto = RuleDTO.from_entity(rule)
+        self.session.add(rule_dto)
+        return rule
 
     def update(self, rule: Rule):
         pass
