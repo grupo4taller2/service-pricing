@@ -66,5 +66,7 @@ COMMAND_HANDLERS = {
     commands.RuleGetAllCommand: handlers.get_all_rules,
     commands.RuleCreateCommand: handlers.create_rule,
     commands.RuleUpdateCommand: handlers.update_rule,
-    commands.RuleEvaluateCommand: handlers.evaluate_rule
+    commands.RuleEvaluateCommand: handlers.evaluate_rule,
+
+    commands.FinishedTripPriceCommand: handlers.finished_trip_price
 }  # type: Dict[Type[commands.Command], Callable]

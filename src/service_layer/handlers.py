@@ -5,7 +5,8 @@ from src.domain.commands import (
     RuleGetAllCommand,
     RuleCreateCommand,
     RuleUpdateCommand,
-    RuleEvaluateCommand
+    RuleEvaluateCommand,
+    FinishedTripPriceCommand
 )
 from src.domain.rule import Rule
 from src.service_layer.abstract_unit_of_work import AbstractUnitOfWork
@@ -64,3 +65,8 @@ def evaluate_rule(cmd: RuleEvaluateCommand, uow: AbstractUnitOfWork):
             cmd.n_trips_last_30m,
             cmd.n_rating
         )
+
+
+def finished_trip_price(cmd: FinishedTripPriceCommand,
+                        uow: AbstractUnitOfWork):
+    raise NotImplementedError

@@ -38,3 +38,7 @@ class RuleEvaluateCommand(Command):
     n_km: str
     n_trips_last_30m: str
     n_rating: str
+
+
+class FinishedTripPriceCommand(Command):
+    trip_id: str
