@@ -13,4 +13,7 @@ class MetricsProvider:
         uri = Settings().PRICING_SERVICE_USERS_URL
         uri += f'/drivers/{driver_username}/qualy/average'
         response = requests.get(uri)
-        return response.json()
+        rating = response.json()
+        if (int(rating) < 0):
+            return '3.5'
+        return rating
